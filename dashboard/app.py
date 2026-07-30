@@ -269,8 +269,8 @@ def render_replay():
     # pre-game accuracy — because this tab's job is to let a reader check the model against a
     # game they watched, and the calibration figure is part of that case. On Win Probability it
     # sits directly under the number it describes, answering "can I trust THIS reading" at the
-    # moment someone reads it. Removing it from here (leaving only the other tab's copy) was a
-    # mistake the project owner caught — the two placements answer different questions.
+    # moment someone reads it. It is deliberately duplicated on the other tab rather than moved:
+    # the two placements answer different questions and neither one covers for the other.
     m1, m2, m3 = st.columns(3)
     m1.metric("Accuracy of the odds", "±1.6 pts", help=CALIBRATION_HELP)
     m2.metric("Built from", "6,135 games", help=SCALE_HELP)
@@ -431,11 +431,10 @@ def render_replay():
         unsafe_allow_html=True,
     )
 
-    # A per-play "biggest swings" table lived here and was removed at the project owner's
-    # request. Its arithmetic was fixed first — it had been crediting substitutions with
-    # scoring plays that happened around them — but the corrected version still did not earn
-    # its place beside the curve, which already shows where a game turned. Removed rather than
-    # kept as filler.
+    # A per-play "biggest swings" table lived here and was removed. Its arithmetic was fixed
+    # first — it had been crediting substitutions with scoring plays that happened around them —
+    # but the corrected version still did not earn its place beside the curve, which already
+    # shows where a game turned. Removed rather than kept as filler.
 
 
 # ------------------------------------------------------------------------- calculator view
@@ -615,9 +614,9 @@ def render_calculator():
             # ever held fewer than six, and offering "1" there produced a confident 45.1% that
             # was extrapolated from fourth quarters rather than measured anywhere.
             min_to = min(min_timeouts_at(period, clock_seconds), max_to)
-            # The (?) here carries the note that used to be a standalone caption above the
-            # whole panel — it applies to every default in this expander, but the project owner
-            # asked for it beside timeouts specifically rather than announced for the section.
+            # The (?) here carries the note that used to be a standalone caption above the whole
+            # panel. It applies to every default in this expander, but sits beside timeouts
+            # specifically: a heading announcing it for the section went unread.
             home_to = d2.slider(
                 "Home timeouts left", min_to, max_to,
                 int(np.clip(typical["home_timeouts_left"], min_to, max_to)),
@@ -626,9 +625,8 @@ def render_calculator():
             )
             away_to = d2.slider("Away timeouts left", min_to, max_to,
                                 int(np.clip(typical["away_timeouts_left"], min_to, max_to)))
-            # Stated as an explicit range ("4-7") rather than a "fewest / most" list — the
-            # project owner asked for the range spelled out, since "fewest 4" alone left the
-            # upper end to be inferred.
+            # Stated as an explicit range ("4-7") rather than a "fewest / most" list: "fewest 4"
+            # alone leaves the upper end to be inferred.
             if min_to > 0 and max_to < rule_max:
                 d2.caption(f"Teams have had **{min_to}-{max_to}** left at this point in a game.")
             elif min_to > 0:
@@ -842,6 +840,13 @@ with st.sidebar:
     )
     st.caption(
         "Neutral-site games (Paris, Mexico City, NBA Cup) are excluded — neither team is home."
+    )
+    # The repo is already reachable from Streamlit's own GitHub icon in the header, but that icon
+    # is easy to miss. Naming the link here makes the source code findable from the dashboard
+    # itself, which is where anyone evaluating the model is most likely to start.
+    st.caption(
+        "[Source code, data pipeline and tests on GitHub]"
+        "(https://github.com/philstead23/nba-win-probability)"
     )
 
 

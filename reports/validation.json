@@ -1,0 +1,304 @@
+{
+  "test_season": "2025-26",
+  "metrics": [
+    {
+      "model": "always predict 55.3%",
+      "log_loss": 0.6872,
+      "brier": 0.247,
+      "auc": 0.5
+    },
+    {
+      "model": "logistic regression",
+      "log_loss": 0.437,
+      "brier": 0.1454,
+      "auc": 0.8711
+    },
+    {
+      "model": "gradient boosted (LightGBM)",
+      "log_loss": 0.4449,
+      "brier": 0.1482,
+      "auc": 0.8659
+    }
+  ],
+  "calibration": [
+    {
+      "index": "0%-10%",
+      "n": 75352,
+      "predicted": 0.0417,
+      "actual": 0.0247,
+      "gap": 0.0169
+    },
+    {
+      "index": "10%-20%",
+      "n": 33756,
+      "predicted": 0.1492,
+      "actual": 0.1522,
+      "gap": 0.003
+    },
+    {
+      "index": "20%-30%",
+      "n": 48935,
+      "predicted": 0.2512,
+      "actual": 0.256,
+      "gap": 0.0048
+    },
+    {
+      "index": "30%-40%",
+      "n": 53670,
+      "predicted": 0.351,
+      "actual": 0.3734,
+      "gap": 0.0224
+    },
+    {
+      "index": "40%-50%",
+      "n": 57104,
+      "predicted": 0.4493,
+      "actual": 0.4679,
+      "gap": 0.0186
+    },
+    {
+      "index": "50%-60%",
+      "n": 56288,
+      "predicted": 0.5494,
+      "actual": 0.5788,
+      "gap": 0.0294
+    },
+    {
+      "index": "60%-70%",
+      "n": 65149,
+      "predicted": 0.6502,
+      "actual": 0.6645,
+      "gap": 0.0143
+    },
+    {
+      "index": "70%-80%",
+      "n": 67551,
+      "predicted": 0.7475,
+      "actual": 0.7486,
+      "gap": 0.0011
+    },
+    {
+      "index": "80%-90%",
+      "n": 61491,
+      "predicted": 0.8456,
+      "actual": 0.8795,
+      "gap": 0.0338
+    },
+    {
+      "index": "90%-100%",
+      "n": 96761,
+      "predicted": 0.9614,
+      "actual": 0.9803,
+      "gap": 0.0189
+    }
+  ],
+  "situations": [
+    {
+      "situation": "Tied, under 30s, home has ball",
+      "games": 66,
+      "actually_won": 68.2,
+      "ci": "\u00b111",
+      "boosted": 56.3,
+      "boosted_diff": -11.9,
+      "logistic": 59.9,
+      "logistic_diff": -8.3
+    },
+    {
+      "situation": "Tied, under 30s, home does NOT have ball",
+      "games": 64,
+      "actually_won": 53.1,
+      "ci": "\u00b112",
+      "boosted": 48.9,
+      "boosted_diff": -4.2,
+      "logistic": 46.5,
+      "logistic_diff": -6.6
+    },
+    {
+      "situation": "Home down 3, under 15s, home ball",
+      "games": 50,
+      "actually_won": 8.0,
+      "ci": "\u00b18",
+      "boosted": 5.6,
+      "boosted_diff": -2.4,
+      "logistic": 3.4,
+      "logistic_diff": -4.6
+    },
+    {
+      "situation": "Home up 5, under 60s, home ball",
+      "games": 88,
+      "actually_won": 98.9,
+      "ci": "\u00b12",
+      "boosted": 98.0,
+      "boosted_diff": -0.9,
+      "logistic": 99.1,
+      "logistic_diff": 0.2
+    },
+    {
+      "situation": "Home up 2, under 60s, away ball",
+      "games": 84,
+      "actually_won": 86.9,
+      "ci": "\u00b17",
+      "boosted": 82.5,
+      "boosted_diff": -4.4,
+      "logistic": 86.5,
+      "logistic_diff": -0.4
+    },
+    {
+      "situation": "Within 3, start of 4th",
+      "games": 270,
+      "actually_won": 51.5,
+      "ci": "\u00b16",
+      "boosted": 52.2,
+      "boosted_diff": 0.7,
+      "logistic": 51.8,
+      "logistic_diff": 0.3
+    },
+    {
+      "situation": "Tied entering overtime",
+      "games": 54,
+      "actually_won": 61.1,
+      "ci": "\u00b113",
+      "boosted": 53.5,
+      "boosted_diff": -7.6,
+      "logistic": 54.2,
+      "logistic_diff": -6.9
+    },
+    {
+      "situation": "Home down 10, start of 4th",
+      "games": 105,
+      "actually_won": 22.9,
+      "ci": "\u00b18",
+      "boosted": 17.1,
+      "boosted_diff": -5.8,
+      "logistic": 16.1,
+      "logistic_diff": -6.8
+    }
+  ],
+  "importance": [
+    {
+      "feature": "margin_per_sqrt_time",
+      "gain": 10726298.412765503,
+      "share": 40.9
+    },
+    {
+      "feature": "margin_per_minute_left",
+      "gain": 8633495.741775513,
+      "share": 32.9
+    },
+    {
+      "feature": "score_margin",
+      "gain": 1905665.7655334473,
+      "share": 7.3
+    },
+    {
+      "feature": "elo_diff",
+      "gain": 1903107.375869751,
+      "share": 7.3
+    },
+    {
+      "feature": "elo_home_win_prob",
+      "gain": 1343377.595840454,
+      "share": 5.1
+    },
+    {
+      "feature": "eloprob_x_time_left",
+      "gain": 420434.7678222656,
+      "share": 1.6
+    },
+    {
+      "feature": "elo_x_time_left",
+      "gain": 316553.6387786865,
+      "share": 1.2
+    },
+    {
+      "feature": "home_timeouts_left",
+      "gain": 171836.6424560547,
+      "share": 0.7
+    },
+    {
+      "feature": "possession_deficit",
+      "gain": 137673.11895751953,
+      "share": 0.5
+    },
+    {
+      "feature": "away_timeouts_left",
+      "gain": 125986.35610961914,
+      "share": 0.5
+    },
+    {
+      "feature": "away_fouls_period",
+      "gain": 106056.98385620117,
+      "share": 0.4
+    },
+    {
+      "feature": "period",
+      "gain": 82726.81378173828,
+      "share": 0.3
+    },
+    {
+      "feature": "home_fouls_period",
+      "gain": 71580.15197753906,
+      "share": 0.3
+    },
+    {
+      "feature": "seconds_remaining",
+      "gain": 69071.85009002686,
+      "share": 0.3
+    },
+    {
+      "feature": "home_has_ball",
+      "gain": 44183.086990356445,
+      "share": 0.2
+    },
+    {
+      "feature": "momentum",
+      "gain": 41503.253646850586,
+      "share": 0.2
+    },
+    {
+      "feature": "ball_x_endgame",
+      "gain": 25231.288055419922,
+      "share": 0.1
+    },
+    {
+      "feature": "possessions_left",
+      "gain": 24103.738845825195,
+      "share": 0.1
+    },
+    {
+      "feature": "margin_in_possessions",
+      "gain": 22785.7869720459,
+      "share": 0.1
+    },
+    {
+      "feature": "ball_x_close_endgame",
+      "gain": 18977.94403076172,
+      "share": 0.1
+    },
+    {
+      "feature": "home_in_bonus",
+      "gain": 18361.283004760742,
+      "share": 0.1
+    },
+    {
+      "feature": "away_in_bonus",
+      "gain": 10126.830017089844,
+      "share": 0.0
+    },
+    {
+      "feature": "is_overtime",
+      "gain": 4519.3729248046875,
+      "share": 0.0
+    },
+    {
+      "feature": "decided_sign",
+      "gain": 772.6699829101562,
+      "share": 0.0
+    },
+    {
+      "feature": "game_decided",
+      "gain": 274.2820129394531,
+      "share": 0.0
+    }
+  ]
+}

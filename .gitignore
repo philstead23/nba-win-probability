@@ -1,43 +1,36 @@
-# This repo exists to host the live dashboard. It contains only what the app needs to run.
-# The full pipeline (data pull, feature build, training, tests), the README, the AI usage
-# log and the writeup are delivered to the reviewer separately — nothing here is the whole
-# project, and nothing here is lost from the local copy.
+# Virtual environment
+venv/
+__pycache__/
+*.pyc
 
-# Everything is excluded by default; the app's files are re-added explicitly below.
-*
+# Raw and intermediate data — ~130MB and fully reproducible by re-running the pipeline.
+# data/processed/ IS committed so the dashboard runs immediately without a 100-minute API pull.
+data/raw/
+data/interim/
 
-!.gitignore
-!requirements.txt
-!README.md
+# Logs
+*.log
 
-# The app itself
-!dashboard/
-!dashboard/app.py
-!dashboard/branding.py
+# Editor / OS noise
+.DS_Store
+.claude/
 
-# The only src modules the app imports, traced transitively from dashboard/app.py
-!src/
-!src/config.py
-!src/elo.py
-!src/features.py
-!src/predict.py
-!src/train_model.py
-!src/utils.py
+# Local snapshots taken before risky edits — a safety net, not project history
+.snapshots/
 
-# Fitted model, bounds tables and contextual defaults, all read at runtime
-!models/
-!models/logistic.pkl
-# lgbm.pkl is excluded: it can only be unpickled with lightgbm, which is no longer a runtime
-# dependency, and the dashboard never loads it (PRIMARY_MODEL is the logistic regression).
-!models/*.json
+# Word autosave locks and per-edit backups
+~$*
+*.docx.backup*
 
-# Game states the dashboard reads directly. Committed so the app runs immediately
-# rather than requiring a 100-minute API pull first.
-!data/
-!data/processed/
-!data/processed/*.parquet
+# The writeup is delivered directly to the reviewer, not published here.
+# reports/writeup.md and reports/build_writeup_docx.py remain, so it is reproducible.
+reports/*.docx
 
-# Team and league marks, cached locally so the app never calls the CDN
-!assets/
-!assets/logos/
-!assets/logos/*.svg
+# LightGBM comparison model: cannot be loaded without lightgbm, which is no longer a runtime
+# dependency, and the dashboard never uses it (PRIMARY_MODEL is the logistic regression).
+models/lgbm.pkl
+
+# Private working documents — not part of the submission
+AI_USAGE_LOG.md
+reports/writeup.md
+reports/build_writeup_docx.py

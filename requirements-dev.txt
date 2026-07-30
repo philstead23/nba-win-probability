@@ -1,0 +1,10 @@
+# Everything in requirements.txt, plus what the full pipeline needs.
+# Kept separate so the deployed dashboard installs only what it actually imports — adding these
+# to the deploy set is what broke the first Streamlit build.
+#
+#   pip install -r requirements-dev.txt
+
+-r requirements.txt
+
+nba_api>=1.10            # LeagueGameFinder + PlayByPlayV3, used by src/data_pull.py
+lightgbm>=4.5            # gradient-boosted comparison model in src/train_model.py
