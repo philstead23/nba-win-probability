@@ -53,6 +53,23 @@ def chronological(season: str) -> pd.DataFrame:
 
 
 def main():
+    # This check reads the RAW play-by-play, because it verifies the foul counter against the
+    # team-foul number the NBA embeds in each foul's description text — which only exists on the
+    # raw rows. data/raw/ is far too large to commit, so a fresh clone has to run the pull first.
+    # Saying that plainly beats a pandas traceback about a missing parquet file.
+    missing = [s for s in SEASONS if not (DATA_RAW / f"pbp_{s}.parquet").exists()]
+    if missing:
+        print("Raw play-by-play not found for: " + ", ".join(missing))
+        print("\nThis check needs the raw feed, which is not committed (too large).")
+        print("Build it first:\n")
+        print("    pip install -r requirements-dev.txt")
+        print("    python src/data_pull.py        # ~20 min per season, resumable, cached\n")
+        print("The other three checks run without it:")
+        print("    python tests/test_predict.py")
+        print("    python tests/test_dashboard.py")
+        print("    python tests/audit_calibration.py")
+        sys.exit(1)
+
     for season in SEASONS:
         print(f"\n=== {season} ===")
         p = chronological(season)

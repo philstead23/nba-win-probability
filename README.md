@@ -36,9 +36,16 @@ Then check it, and open it:
 ```bash
 python tests/test_predict.py               # model + prediction path
 python tests/test_dashboard.py             # the dashboard renders and behaves
-python tests/test_foul_timeout_accuracy.py # fouls/timeouts vs the NBA's own numbering
 python tests/audit_calibration.py          # calibration across 81 game situations
 streamlit run dashboard/app.py             # then open http://localhost:8501
+```
+
+Those four run straight from a clone — the processed features and the trained models are
+committed. One more check needs the raw feed, which is too large to commit, so it requires
+step 1 of the pipeline above to have been run first:
+
+```bash
+python tests/test_foul_timeout_accuracy.py # fouls/timeouts vs the NBA's own numbering
 ```
 
 Optional:
