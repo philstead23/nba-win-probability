@@ -105,9 +105,20 @@ def main():
         check(f"column '{col}' matches", same, f"max diff {np.nanmax(np.abs(a - b)) if not same else 0}")
 
     print("\n2. Predictions match between the two paths")
+    # The gradient-boosted model is the rejected comparison, not the shipped one. It needs
+    # `lightgbm` to unpickle, which lives in requirements-dev.txt — so a reviewer who installed
+    # only the runtime set is skipped past it rather than failed. The logistic model is the
+    # submission and is never skipped.
     for which in ("logistic", "lgbm"):
-        p_pipeline = win_probability(sample, which)
-        p_rebuilt = win_probability(rebuilt, which)
+        try:
+            p_pipeline = win_probability(sample, which)
+            p_rebuilt = win_probability(rebuilt, which)
+        except (FileNotFoundError, ModuleNotFoundError) as exc:
+            if which == "logistic":
+                raise
+            print(f"  SKIP  {which}: comparison model unavailable ({type(exc).__name__}) — "
+                  f"install requirements-dev.txt and run src/train_model.py to include it")
+            continue
         check(
             f"{which}: predictions identical",
             np.allclose(p_pipeline, p_rebuilt, atol=1e-12),

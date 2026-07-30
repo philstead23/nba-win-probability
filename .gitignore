@@ -28,7 +28,8 @@ reports/*.docx
 
 # LightGBM comparison model: cannot be loaded without lightgbm, which is no longer a runtime
 # dependency, and the dashboard never uses it (PRIMARY_MODEL is the logistic regression).
-models/lgbm.pkl
+# models/lgbm.pkl is committed (904 KB) so the "logistic beat the gradient-boosted model"
+# comparison in the writeup can be checked without a retraining run.
 
 # Private working documents — not part of the submission
 AI_USAGE_LOG.md
