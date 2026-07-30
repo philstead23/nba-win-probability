@@ -811,16 +811,30 @@ def render_calculator():
 # The league wordmark rather than a basketball emoji. Cached locally in assets/logos, so the
 # header does not depend on the network. Falls back to the emoji if the file is missing.
 _nba = logo_img("NBA", 46)
+_GITHUB_URL = "https://github.com/philstead23/nba-win-probability"
+# On top of the header rather than only in the sidebar: a collapsed or scrolled-past sidebar
+# would otherwise leave the code deliverable with no visible link on the page a reviewer lands
+# on first.
+_code_link = (
+    f'<a href="{_GITHUB_URL}" target="_blank" style="text-decoration:none; flex-shrink:0;">'
+    f'<div style="border:1px solid rgba(250,250,250,.3); border-radius:8px; padding:8px 16px; '
+    f'font-size:.9rem; font-weight:600; color:inherit; white-space:nowrap;">'
+    f'View code on GitHub &#8599;</div></a>'
+)
 if _nba:
     st.markdown(
-        f'<div style="display:flex; align-items:center; gap:20px; margin:0 0 6px 0;">'
+        f'<div style="display:flex; align-items:center; justify-content:space-between; '
+        f'gap:20px; margin:0 0 6px 0;">'
+        f'<div style="display:flex; align-items:center; gap:20px;">'
         f'{_nba}'
         f'<span style="font-size:2.4rem; font-weight:700; letter-spacing:-.02em;">'
-        f'Win Probability</span></div>',
+        f'Win Probability</span></div>'
+        f'{_code_link}</div>',
         unsafe_allow_html=True,
     )
 else:
     st.title("🏀 NBA Win Probability")
+    st.markdown(_code_link, unsafe_allow_html=True)
 
 # The sidebar is written BEFORE the tabs, not after. Streamlit streams elements to the browser
 # in the order the script produces them, so with this block at the foot of the file the About
@@ -829,15 +843,6 @@ else:
 with st.sidebar:
     st.header("About")
     st.write("Win probability for the home team, at any moment of an NBA game.")
-
-    # A real button, not a text caption: this is the code deliverable, and a link buried at the
-    # foot of the sidebar is too easy to scroll past. Placed first, before anything else, so it
-    # is the first thing visible regardless of window height.
-    st.link_button(
-        "View source code, data pipeline & tests on GitHub",
-        "https://github.com/philstead23/nba-win-probability",
-        use_container_width=True,
-    )
 
     # Scale, not accuracy. These describe what the model is made of; the numbers that argue
     # it can be TRUSTED live on the "Check it against real games" tab, next to the evidence
