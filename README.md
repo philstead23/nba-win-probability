@@ -97,14 +97,21 @@ python src/build_game_states.py   # -> data/interim/game_states_{season}.parquet
 Converts the raw event feed into one row per moment: score, time remaining, possession,
 and the label (`home_win`).
 
-**What the numbers refer to**, since they are easy to conflate:
+**What the numbers refer to**, since they are easy to conflate. The four training seasons
+(2021-22 → 2024-25) total 4,910 games, not 4,174 — the difference is a validation slice carved
+out of those same four seasons, used only to choose settings like the leverage weight, never
+to train the model itself:
 
 | | Seasons | Games | Moments |
 |---|---|---|---|
 | Play-by-play pulled | 5 (2021-22 → 2025-26) | 6,135 | 3,011,185 |
-| **Model trained on** | **4 (2021-22 → 2024-25)** | **4,174** | **2,036,962** |
+| Four training seasons, before the split | 4 (2021-22 → 2024-25) | 4,910 | — |
+| ↳ **Actually trained on** | — | **4,174** | **2,036,962** |
+| ↳ Validation slice (tuning only, never trained on) | — | **736** | — |
 | Held out for testing | 1 (2025-26) | 1,225 | 616,057 |
 | Elo seed (final scores only) | 1 (2020-21) | 1,080 | — |
+
+4,174 + 736 + 1,225 = 6,135 — every game pulled is accounted for exactly once.
 
 A "moment" is one row per play-by-play event — every shot, rebound, foul and timeout —
 carrying the score, clock and possession at that instant. About 490 per game.
