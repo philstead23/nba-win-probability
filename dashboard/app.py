@@ -481,13 +481,18 @@ def render_calculator():
             )
         )
 
-    # The range is fixed at +/-40 for the whole game, with one exception: at tip-off no
-    # possession has been played, so 0-0 is not merely unlikely, it is the only possible
-    # score. Everywhere else a fixed range beats a shifting one — a slider whose bounds move
-    # when you change the clock can silently clamp a value you already chose, and "rare" is
-    # not a good reason to block someone exploring a hypothetical.
+    # The bound is the smaller of two things: what basketball has actually produced by this
+    # point (`reachable`), and a human-relevant ceiling late in blowouts (`MAX_SLIDER_MARGIN`
+    # — the all-time record is 78, and nobody needs a slider that reaches a 78-point lead).
+    #
+    # This used to only take the second number, always, everywhere except literal tip-off — so
+    # ten minutes into the first quarter, when no game in five seasons has led by more than 11,
+    # the slider still went to 40 and the model would answer a lead that has never happened.
+    # That produced a real number for a situation with zero evidence behind it, which is a
+    # worse failure mode than a slider whose range visibly shrinks as the clock empties: a
+    # bound that moves is honest about why: it moves because what's possible has changed.
     reachable = max_margin_at(period, clock_seconds)
-    cap = 0 if reachable == 0 else MAX_SLIDER_MARGIN
+    cap = min(reachable, MAX_SLIDER_MARGIN)
     with margin_box.container():
         if cap == 0:
             st.slider("Score — minus means home is trailing", -1, 1, 0, 1, key="margin",
@@ -496,10 +501,16 @@ def render_calculator():
             margin = 0
             st.caption("**Tip-off** — nothing has been played, so the score must be level.")
         else:
+            # A value left over from a wider range (e.g. the clock just moved earlier) must be
+            # pulled inside the new bound before the widget is built, or Streamlit renders it
+            # pinned at the old, now out-of-range value instead of visibly following the cap.
+            st.session_state["margin"] = int(
+                np.clip(st.session_state.get("margin", 0), -cap, cap)
+            )
             # The sign convention goes in the label, right beside the control. A coach should
             # not have to hover a tooltip to learn which way is which.
             margin = st.slider(
-                "Score — minus means home is trailing", -cap, cap, 0, 1, key="margin",
+                "Score — minus means home is trailing", -cap, cap, key="margin",
                 help="Drag left if the home team is behind, right if ahead. The line below "
                      "states it in words.",
             )
@@ -511,8 +522,8 @@ def render_calculator():
                 st.caption(f"**Home trails by {abs(margin)}**")
             else:
                 st.caption("**Tied**")
-            if reachable < MAX_SLIDER_MARGIN:
-                st.caption(f"Largest lead reached this early in a game: {reachable}.")
+            if cap < MAX_SLIDER_MARGIN:
+                st.caption(f"Bounded to what has actually happened this early: up to {cap}.")
 
     # Slider starting points come from what is typical at THIS point in a game, not from a
     # single flat league average — two timeouts used is normal in the first quarter and wrong
