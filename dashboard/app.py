@@ -830,6 +830,15 @@ with st.sidebar:
     st.header("About")
     st.write("Win probability for the home team, at any moment of an NBA game.")
 
+    # A real button, not a text caption: this is the code deliverable, and a link buried at the
+    # foot of the sidebar is too easy to scroll past. Placed first, before anything else, so it
+    # is the first thing visible regardless of window height.
+    st.link_button(
+        "View source code, data pipeline & tests on GitHub",
+        "https://github.com/philstead23/nba-win-probability",
+        use_container_width=True,
+    )
+
     # Scale, not accuracy. These describe what the model is made of; the numbers that argue
     # it can be TRUSTED live on the "Check it against real games" tab, next to the evidence
     # itself. Keeping the two apart stops the sidebar becoming a second results panel.
@@ -843,13 +852,6 @@ with st.sidebar:
     )
     st.caption(
         "Neutral-site games (Paris, Mexico City, NBA Cup) are excluded — neither team is home."
-    )
-    # The repo is already reachable from Streamlit's own GitHub icon in the header, but that icon
-    # is easy to miss. Naming the link here makes the source code findable from the dashboard
-    # itself, which is where anyone evaluating the model is most likely to start.
-    st.caption(
-        "[Source code, data pipeline and tests on GitHub]"
-        "(https://github.com/philstead23/nba-win-probability)"
     )
 
 
