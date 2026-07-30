@@ -73,8 +73,8 @@ SCALE_HELP = (
     "only for testing, so the accuracy above comes from games it had never seen."
 )
 MOMENT_HELP = (
-    "One moment is a single event — a shot, rebound, foul or timeout — with the score, clock "
-    "and possession as they stood at that instant.\n\n"
+    "One moment is a single event — a shot, rebound, foul or timeout — paired with the score, "
+    "clock and possession recorded alongside it.\n\n"
     "About 490 per game."
 )
 PREGAME_HELP = (

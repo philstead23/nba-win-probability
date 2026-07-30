@@ -233,12 +233,11 @@ harder test than a random split.
 
 Team strength is an **Elo rating** (`src/elo.py`), not a trailing point differential. The
 differential version was replaced because it is blind to schedule — +6 per game against a soft
-slate and +6 against contenders score identically — which produced visibly wrong tip-off
-numbers, including a home side at 52.7% in a game the betting market made them 8.5-point
-underdogs.
+slate and +6 against contenders score identically — which left tip-off estimates clustered near
+the home-court baseline no matter who was playing.
 
-Elo updates by how surprising each result was, so beating a strong team is worth far more than
-beating a weak one. Margin of victory counts with diminishing returns, damped for teams already
+Elo prices each result against the opponent's rating, so the same win is worth more against a
+strong team. Margin of victory counts with diminishing returns, damped for teams already
 rated highly. Ratings carry across seasons, regressed a quarter of the way toward the mean each
 offseason, and are seeded by one extra prior season of final scores so that early-season games
 are not strength-blind.
@@ -247,8 +246,8 @@ Home advantage is set to **37 Elo points**, fitted to the 55.3% home win rate in
 not the commonly quoted 100, which implies 64% and belongs to an earlier era.
 
 Elo alone, before a single possession is played, picks winners at **65.8%** across 6,150 games
-(log loss 0.6194, against 0.6875 for a constant). Public betting markets sit around 66-68%, so
-this is close to the practical ceiling for pre-game information.
+(log loss 0.6194, against 0.6875 for a constant). Pre-game accuracy has a low ceiling in any
+case: almost everything that decides a basketball game has not happened yet at tip-off.
 
 **Margin of victory is counted, and that was tested rather than assumed.** Weighting margin
 means a team can rate above its record — Charlotte finished 2025-26 at 44-38 but rated 6th,

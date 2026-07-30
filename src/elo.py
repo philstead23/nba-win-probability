@@ -1,14 +1,13 @@
 """
 Elo ratings for NBA teams, used as the pre-game team strength feature.
 
-This replaces a trailing 15-game point differential, whose flaw is that it has no idea *who*
-a team played: +6 per game against a soft schedule and +6 against contenders score the same.
-That produced visibly wrong tip-off numbers — a 2025-11-04 game had the home side at 46.8%
-against an opponent the betting market favoured by 8.5 points, roughly a 30% proposition.
+This replaces a trailing 15-game point differential, which weights every opponent equally:
++6 per game compiled against a soft slate counts the same as +6 against contenders. Tip-off
+estimates from that feature sat near a coin flip regardless of who was playing.
 
-Elo fixes exactly that. A rating moves by how surprising each result was, so beating a strong
-team is worth far more than beating a weak one, and strength of schedule is handled implicitly
-rather than ignored.
+Elo prices each result against the opponent's rating instead, so the same win is worth more
+against a strong team than a weak one and schedule difficulty is absorbed by the rating rather
+than left out of it.
 
 Design choices, all standard for basketball Elo:
   * **Margin of victory matters**, with diminishing returns — a 30-point win is worth more than

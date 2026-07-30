@@ -239,8 +239,8 @@ def build_team_form(seasons) -> pd.DataFrame:
     scores. Resetting at each September left roughly the first month of every season with no
     form at all — a team needs 15 games before the window fills — so the model went into early
     November games knowing nothing about either team and defaulting to a coin flip decided by
-    home court. That was visible in a 2025-11-04 game where it gave the home side 52.7% against
-    a much stronger opponent the betting market had favoured by 8.5 points.
+    home court — a 2025-11-04 game opened at 52.7% for the home side, essentially the league
+    home-court baseline, with neither roster contributing anything to the estimate.
 
     Carrying the prior season forward is imperfect, since rosters change over a summer, but it
     is strictly more information than nothing and it decays out within 15 games. Its value was
