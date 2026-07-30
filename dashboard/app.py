@@ -461,7 +461,7 @@ def render_calculator():
                         horizontal=True, key="ball")
 
     with c2:
-        period = c2.selectbox("Period", [1, 2, 3, 4, 5, 6], index=3, key="period",
+        period = c2.selectbox("Period", [1, 2, 3, 4, 5, 6], index=0, key="period",
                               format_func=lambda p: f"Q{p}" if p <= 4 else f"OT{p - 4}")
 
         # One control for the clock instead of separate minutes and seconds, stepping a
@@ -472,7 +472,11 @@ def render_calculator():
         # per notch makes the curve move the way the game does.
         max_clock = 720 if period <= 4 else 300
         options = list(range(0, max_clock + 1))
-        default = 120
+        # Q1 tip-off (12:00) is the opening default. Passed through min() rather than as a bare
+        # literal: this value is also Streamlit's fallback whenever `options` itself changes
+        # shape (e.g. switching from regulation's 0-720 range to overtime's 0-300), and a fixed
+        # 720 stops being a valid option the moment period moves to OT, crashing the widget.
+        default = min(720, max_clock)
         clock_seconds = float(
             c2.select_slider(
                 "Time left in the period",

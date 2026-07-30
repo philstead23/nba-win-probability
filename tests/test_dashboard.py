@@ -78,6 +78,10 @@ def main():
                 return float(html.unescape(found.group(1)).lstrip("<>").rstrip("%"))
         return float("nan")
 
+    # The app opens at Q1 12:00, where score and momentum are deliberately locked (nothing has
+    # been played yet). Move off tip-off first so those controls are live for these checks.
+    at.select_slider(key="clock").set_value(600).run()
+
     at.slider(key="margin").set_value(-20).run()
     check("no exception after setting a 20-point deficit", not at.exception, exceptions(at))
     losing = home_win_pct(at)
