@@ -1,0 +1,9 @@
+altair==5.5.0
+lightgbm==4.6.0
+nba_api==1.10.2
+numpy==2.0.2
+pandas==2.3.3
+pyarrow==21.0.0        # pandas parquet engine; not imported directly
+python-docx==1.2.0
+scikit-learn==1.6.1
+streamlit==1.50.0

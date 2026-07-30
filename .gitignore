@@ -1,0 +1,41 @@
+# This repo exists to host the live dashboard. It contains only what the app needs to run.
+# The full pipeline (data pull, feature build, training, tests), the README, the AI usage
+# log and the writeup are delivered to the reviewer separately — nothing here is the whole
+# project, and nothing here is lost from the local copy.
+
+# Everything is excluded by default; the app's files are re-added explicitly below.
+*
+
+!.gitignore
+!requirements.txt
+!README.md
+
+# The app itself
+!dashboard/
+!dashboard/app.py
+!dashboard/branding.py
+
+# The only src modules the app imports, traced transitively from dashboard/app.py
+!src/
+!src/config.py
+!src/elo.py
+!src/features.py
+!src/predict.py
+!src/train_model.py
+!src/utils.py
+
+# Fitted model, bounds tables and contextual defaults, all read at runtime
+!models/
+!models/*.pkl
+!models/*.json
+
+# Game states the dashboard reads directly. Committed so the app runs immediately
+# rather than requiring a 100-minute API pull first.
+!data/
+!data/processed/
+!data/processed/*.parquet
+
+# Team and league marks, cached locally so the app never calls the CDN
+!assets/
+!assets/logos/
+!assets/logos/*.svg

@@ -1,0 +1,476 @@
+{
+  "buckets": {
+    "1_0": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 6.0,
+      "home_fouls_period": 3.0,
+      "away_fouls_period": 3.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "1_1": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 6.0,
+      "home_fouls_period": 3.0,
+      "away_fouls_period": 3.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "1_10": {
+      "home_timeouts_left": 7.0,
+      "away_timeouts_left": 7.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "1_11": {
+      "home_timeouts_left": 7.0,
+      "away_timeouts_left": 7.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "1_12": {
+      "home_timeouts_left": 7.0,
+      "away_timeouts_left": 7.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "1_2": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 6.0,
+      "home_fouls_period": 3.0,
+      "away_fouls_period": 3.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "1_3": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 6.0,
+      "home_fouls_period": 2.0,
+      "away_fouls_period": 2.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "1_4": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 7.0,
+      "home_fouls_period": 2.0,
+      "away_fouls_period": 2.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "1_5": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 7.0,
+      "home_fouls_period": 2.0,
+      "away_fouls_period": 2.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "1_6": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 7.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "1_7": {
+      "home_timeouts_left": 7.0,
+      "away_timeouts_left": 7.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "1_8": {
+      "home_timeouts_left": 7.0,
+      "away_timeouts_left": 7.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "1_9": {
+      "home_timeouts_left": 7.0,
+      "away_timeouts_left": 7.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_0": {
+      "home_timeouts_left": 5.0,
+      "away_timeouts_left": 5.0,
+      "home_fouls_period": 4.0,
+      "away_fouls_period": 4.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_1": {
+      "home_timeouts_left": 5.0,
+      "away_timeouts_left": 5.0,
+      "home_fouls_period": 4.0,
+      "away_fouls_period": 4.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_10": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 6.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_11": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 6.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_12": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 6.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_2": {
+      "home_timeouts_left": 5.0,
+      "away_timeouts_left": 5.0,
+      "home_fouls_period": 3.0,
+      "away_fouls_period": 3.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_3": {
+      "home_timeouts_left": 5.0,
+      "away_timeouts_left": 5.0,
+      "home_fouls_period": 3.0,
+      "away_fouls_period": 3.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_4": {
+      "home_timeouts_left": 5.0,
+      "away_timeouts_left": 5.0,
+      "home_fouls_period": 3.0,
+      "away_fouls_period": 3.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_5": {
+      "home_timeouts_left": 5.0,
+      "away_timeouts_left": 5.0,
+      "home_fouls_period": 2.0,
+      "away_fouls_period": 2.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_6": {
+      "home_timeouts_left": 5.0,
+      "away_timeouts_left": 6.0,
+      "home_fouls_period": 2.0,
+      "away_fouls_period": 2.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_7": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 6.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_8": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 6.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "2_9": {
+      "home_timeouts_left": 6.0,
+      "away_timeouts_left": 6.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_0": {
+      "home_timeouts_left": 4.0,
+      "away_timeouts_left": 4.0,
+      "home_fouls_period": 4.0,
+      "away_fouls_period": 4.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_1": {
+      "home_timeouts_left": 4.0,
+      "away_timeouts_left": 4.0,
+      "home_fouls_period": 4.0,
+      "away_fouls_period": 4.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_10": {
+      "home_timeouts_left": 5.0,
+      "away_timeouts_left": 5.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_11": {
+      "home_timeouts_left": 5.0,
+      "away_timeouts_left": 5.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_12": {
+      "home_timeouts_left": 5.0,
+      "away_timeouts_left": 5.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_2": {
+      "home_timeouts_left": 4.0,
+      "away_timeouts_left": 4.0,
+      "home_fouls_period": 3.0,
+      "away_fouls_period": 3.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_3": {
+      "home_timeouts_left": 4.0,
+      "away_timeouts_left": 4.0,
+      "home_fouls_period": 3.0,
+      "away_fouls_period": 3.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_4": {
+      "home_timeouts_left": 4.0,
+      "away_timeouts_left": 4.0,
+      "home_fouls_period": 3.0,
+      "away_fouls_period": 3.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_5": {
+      "home_timeouts_left": 4.0,
+      "away_timeouts_left": 4.0,
+      "home_fouls_period": 2.0,
+      "away_fouls_period": 2.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_6": {
+      "home_timeouts_left": 4.0,
+      "away_timeouts_left": 4.0,
+      "home_fouls_period": 2.0,
+      "away_fouls_period": 2.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_7": {
+      "home_timeouts_left": 4.0,
+      "away_timeouts_left": 5.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_8": {
+      "home_timeouts_left": 5.0,
+      "away_timeouts_left": 5.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "3_9": {
+      "home_timeouts_left": 5.0,
+      "away_timeouts_left": 5.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "4_0": {
+      "home_timeouts_left": 2.0,
+      "away_timeouts_left": 2.0,
+      "home_fouls_period": 5.0,
+      "away_fouls_period": 5.0,
+      "home_in_bonus": 1.0,
+      "away_in_bonus": 1.0
+    },
+    "4_1": {
+      "home_timeouts_left": 2.0,
+      "away_timeouts_left": 2.0,
+      "home_fouls_period": 4.0,
+      "away_fouls_period": 4.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "4_10": {
+      "home_timeouts_left": 4.0,
+      "away_timeouts_left": 4.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "4_11": {
+      "home_timeouts_left": 4.0,
+      "away_timeouts_left": 4.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "4_12": {
+      "home_timeouts_left": 4.0,
+      "away_timeouts_left": 4.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "4_2": {
+      "home_timeouts_left": 2.0,
+      "away_timeouts_left": 2.0,
+      "home_fouls_period": 4.0,
+      "away_fouls_period": 4.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "4_3": {
+      "home_timeouts_left": 2.0,
+      "away_timeouts_left": 2.0,
+      "home_fouls_period": 3.0,
+      "away_fouls_period": 3.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "4_4": {
+      "home_timeouts_left": 3.0,
+      "away_timeouts_left": 3.0,
+      "home_fouls_period": 3.0,
+      "away_fouls_period": 3.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "4_5": {
+      "home_timeouts_left": 3.0,
+      "away_timeouts_left": 3.0,
+      "home_fouls_period": 2.0,
+      "away_fouls_period": 2.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "4_6": {
+      "home_timeouts_left": 3.0,
+      "away_timeouts_left": 3.0,
+      "home_fouls_period": 2.0,
+      "away_fouls_period": 2.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "4_7": {
+      "home_timeouts_left": 3.0,
+      "away_timeouts_left": 3.0,
+      "home_fouls_period": 2.0,
+      "away_fouls_period": 2.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "4_8": {
+      "home_timeouts_left": 3.0,
+      "away_timeouts_left": 3.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "4_9": {
+      "home_timeouts_left": 4.0,
+      "away_timeouts_left": 4.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "5_0": {
+      "home_timeouts_left": 2.0,
+      "away_timeouts_left": 2.0,
+      "home_fouls_period": 2.0,
+      "away_fouls_period": 2.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "5_1": {
+      "home_timeouts_left": 3.0,
+      "away_timeouts_left": 3.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "5_2": {
+      "home_timeouts_left": 3.0,
+      "away_timeouts_left": 3.0,
+      "home_fouls_period": 1.0,
+      "away_fouls_period": 1.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "5_3": {
+      "home_timeouts_left": 3.0,
+      "away_timeouts_left": 3.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "5_4": {
+      "home_timeouts_left": 3.0,
+      "away_timeouts_left": 3.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    },
+    "5_5": {
+      "home_timeouts_left": 3.0,
+      "away_timeouts_left": 3.0,
+      "home_fouls_period": 0.0,
+      "away_fouls_period": 0.0,
+      "home_in_bonus": 0.0,
+      "away_in_bonus": 0.0
+    }
+  },
+  "overall": {
+    "home_timeouts_left": 5.0,
+    "away_timeouts_left": 5.0,
+    "home_fouls_period": 2.0,
+    "away_fouls_period": 2.0,
+    "home_in_bonus": 0.0,
+    "away_in_bonus": 0.0
+  }
+}
