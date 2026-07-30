@@ -332,6 +332,30 @@ seconds, where the real gap is about 15. Weighting lifted that to ~10 points **a
 log loss both overall and on late close states — accuracy and realism moved together rather
 than trading off.
 
+### Canonical game states
+
+States whose answer basketball already knows, checked against what actually happened. These are
+not arithmetic tests — a wrong sign or a mis-scaled feature shows up here as a number a coach
+would laugh at. Observed rates count **one vote per game** across all five seasons, from the
+matching band in each row. Run them with `python tests/test_predict.py`.
+
+| State | Model says | Actually won | Games |
+|---|---|---|---|
+| +20, 1:00 left in Q4 | 99.9% | 100.0% | 376 |
+| −20, 1:00 left in Q4 | 0.1% | 0.0% | 262 |
+| +10, 5:00 left in Q4 | 92.9% | 95.8% | 571 |
+| +5, 2:00 left in Q4 | 88.7% | 90.4% | 684 |
+| Tied at tip-off | 53.5% | 55.3% | 6,135 |
+| Tied, under 0:30, home ball | 63.3% | 61.4% | 352 |
+| Tied, under 0:30, away ball | 49.9% | 46.6% | 356 |
+
+Three orderings are asserted separately, and must hold whatever the numbers do: a lead beats its
+mirror-image deficit; a lead and its mirror sum to about 1; and the same lead is worth more late
+than early.
+
+The first row is the worked example the assessment itself gives — +20 with a minute left should
+read about 99%. It reads 99.9%, against 376 games in that position of which every one was won.
+
 ### Known calibration bias: the model is too confident in the leader
 
 `tests/audit_calibration.py` sweeps 81 buckets — nine score bands across nine clock windows —

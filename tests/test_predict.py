@@ -47,29 +47,39 @@ def canonical_game_states():
     sign or a mis-scaled feature shows up as a number a coach would laugh at.
     """
     print("\nCanonical game states")
+    # Observed rates are counted one vote per game across all five seasons, from the matching
+    # band shown beside each case. They are re-derived from data/processed rather than carried
+    # forward: an earlier version of this file printed 56.6% for the tied-with-the-ball case,
+    # while README.md reported 61.4% on 352 games for the same situation. The README figure was
+    # the correct one, and the numbers below now agree with it.
     cases = [
-        # label, kwargs, acceptable band, observed rate across five seasons
+        # label, kwargs, acceptable band, observed rate, games, matching band
         ("+20 with 1:00 left is near certain",
-         dict(score_margin=20, period=4, clock_seconds=60.0), (0.97, 1.0), 1.000),
+         dict(score_margin=20, period=4, clock_seconds=60.0), (0.97, 1.0), 1.000, 376,
+         "margin 19-21, 45-75s left"),
         ("-20 with 1:00 left is near hopeless",
-         dict(score_margin=-20, period=4, clock_seconds=60.0), (0.0, 0.03), 0.000),
+         dict(score_margin=-20, period=4, clock_seconds=60.0), (0.0, 0.03), 0.000, 262,
+         "margin -21 to -19, 45-75s left"),
         ("+10 with 5:00 left is strong but not settled",
-         dict(score_margin=10, period=4, clock_seconds=300.0), (0.85, 0.97), 0.943),
+         dict(score_margin=10, period=4, clock_seconds=300.0), (0.85, 0.97), 0.958, 571,
+         "margin 9-11, 285-315s left"),
         ("+5 with 2:00 left is a likely win",
-         dict(score_margin=5, period=4, clock_seconds=120.0), (0.80, 0.95), 0.904),
+         dict(score_margin=5, period=4, clock_seconds=120.0), (0.80, 0.95), 0.904, 684,
+         "margin 4-6, 105-135s left"),
         ("tied at tip-off is roughly home-court advantage",
-         dict(score_margin=0, period=1, clock_seconds=720.0), (0.50, 0.58), 0.553),
+         dict(score_margin=0, period=1, clock_seconds=720.0), (0.50, 0.58), 0.553, 6135,
+         "every game"),
         ("tied under 0:30 with the ball beats a coin flip",
          dict(score_margin=0, period=4, clock_seconds=30.0, home_has_ball=True),
-         (0.55, 0.72), 0.566),
+         (0.55, 0.72), 0.614, 352, "tied, under 30s, home ball"),
         ("tied under 0:30 without the ball is about even",
          dict(score_margin=0, period=4, clock_seconds=30.0, home_has_ball=False),
-         (0.42, 0.55), 0.455),
+         (0.42, 0.55), 0.466, 356, "tied, under 30s, away ball"),
     ]
-    for label, kwargs, (lo, hi), observed in cases:
+    for label, kwargs, (lo, hi), observed, n, band in cases:
         p = predict_situation(**kwargs)
-        check(f"{label}  [model {p*100:.1f}%, actual {observed*100:.1f}%]", lo <= p <= hi,
-              f"{p:.4f} outside {lo}-{hi}")
+        check(f"{label}  [model {p*100:.1f}%, actual {observed*100:.1f}% of {n:,} games]",
+              lo <= p <= hi, f"{p:.4f} outside {lo}-{hi}  ({band})")
 
     # Ordering that must hold regardless of the exact numbers.
     print("\nCanonical orderings")
