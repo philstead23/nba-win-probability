@@ -99,8 +99,8 @@ and the label (`home_win`).
 
 **What the numbers refer to**, since they are easy to conflate. The four training seasons
 (2021-22 → 2024-25) total 4,910 games, not 4,174 — the difference is a validation slice carved
-out of those same four seasons, used only to choose settings like the leverage weight, never
-to train the model itself:
+out of those same four seasons, used only to measure which settings (like the leverage weight)
+scored best, never to train the model itself:
 
 | | Seasons | Games | Moments |
 |---|---|---|---|

@@ -72,9 +72,10 @@ CALIBRATION_HELP = (
 # untouched test season.
 SCALE_HELP = (
     "6,135 NBA games. About 3 million individual moments.\n\n"
-    "It learned from 4,174 of those. Another 736 were held back and used only to choose "
-    "settings, never to train on. The last 1,225 — all of 2025-26 — were locked away and used "
-    "only for testing, so the accuracy above comes from games it had never seen."
+    "It learned from 4,174 of those. Another 736 were kept separate and used only to measure "
+    "which settings scored best — never fed into training itself. The last 1,225 — all of "
+    "2025-26 — were locked away and used only for testing, so the accuracy above comes from "
+    "games it had never seen."
 )
 MOMENT_HELP = (
     "One moment is a single event — a shot, rebound, foul or timeout — paired with the score, "
@@ -280,9 +281,9 @@ def render_replay():
     m2.metric("Games pulled (train + test)", "6,135", help=SCALE_HELP)
     m3.metric("Picks winners pre-game", "65.8%", help=PREGAME_HELP)
     st.caption(
-        "Trained on 4,174 games. Another 736 were set aside to choose settings, not to train "
-        f"on. Accuracy above comes from a separate 1,225 the model never saw — all of "
-        f"{TEST_SEASON}, held back for testing only."
+        "Trained on 4,174 games. Another 736 were kept separate to measure which settings "
+        f"performed best, not fed into training. Accuracy above comes from a separate 1,225 "
+        f"the model never saw — all of {TEST_SEASON}, held back for testing only."
     )
 
     st.markdown("---")
