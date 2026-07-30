@@ -20,7 +20,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from nba_api.stats.static import teams as static_teams
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from config import DATA_INTERIM, DATA_PROCESSED, DATA_RAW, SEASONS, SEED_SEASON
@@ -69,7 +68,24 @@ TIMEOUTS_PER_GAME = 7
 TIMEOUTS_PER_OVERTIME = 2
 FORM_WINDOW_GAMES = 15
 
-NICKNAME_TO_ABBR = {t["nickname"].lower(): t["abbreviation"] for t in static_teams.get_teams()}
+# Hardcoded rather than read from nba_api at import time. Two reasons, the second decisive:
+#
+#   * it is the only thing in this module that needed the library, and importing nba_api put a
+#     network-capable dependency on the dashboard's runtime path for one static lookup;
+#   * nba_api requires numpy>=2.1.0, which collided with this project's numpy pin and made
+#     requirements.txt unresolvable on deploy. Removing it removed the conflict at its source.
+#
+# Franchise nicknames change rarely; when one does, this needs updating alongside the logos.
+NICKNAME_TO_ABBR = {
+    "hawks": "ATL", "nets": "BKN", "celtics": "BOS", "hornets": "CHA",
+    "bulls": "CHI", "cavaliers": "CLE", "mavericks": "DAL", "nuggets": "DEN",
+    "pistons": "DET", "warriors": "GSW", "rockets": "HOU", "pacers": "IND",
+    "clippers": "LAC", "lakers": "LAL", "grizzlies": "MEM", "heat": "MIA",
+    "bucks": "MIL", "timberwolves": "MIN", "pelicans": "NOP", "knicks": "NYK",
+    "thunder": "OKC", "magic": "ORL", "76ers": "PHI", "suns": "PHX",
+    "trail blazers": "POR", "kings": "SAC", "spurs": "SAS", "raptors": "TOR",
+    "jazz": "UTA", "wizards": "WAS",
+}
 
 
 def elapsed_seconds(period: pd.Series, clock: pd.Series) -> pd.Series:

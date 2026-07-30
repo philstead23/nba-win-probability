@@ -26,7 +26,9 @@
 
 # Fitted model, bounds tables and contextual defaults, all read at runtime
 !models/
-!models/*.pkl
+!models/logistic.pkl
+# lgbm.pkl is excluded: it can only be unpickled with lightgbm, which is no longer a runtime
+# dependency, and the dashboard never loads it (PRIMARY_MODEL is the logistic regression).
 !models/*.json
 
 # Game states the dashboard reads directly. Committed so the app runs immediately

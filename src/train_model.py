@@ -25,7 +25,6 @@ import pickle
 import sys
 from pathlib import Path
 
-import lightgbm as lgb
 import numpy as np
 import pandas as pd
 from sklearn.impute import SimpleImputer
@@ -251,6 +250,11 @@ def main():
     X_va, y_va = to_matrix(valid), valid[LABEL]
 
     # --- gradient boosted trees ---
+    # Imported here rather than at module scope. predict.py imports this module, so a top-level
+    # import put LightGBM — a large wheel with native code — on the dashboard's runtime path even
+    # though the app only ever serves the logistic model. Training still needs it; serving does not.
+    import lightgbm as lgb
+
     model = lgb.LGBMClassifier(
         objective="binary",
         n_estimators=6000,
