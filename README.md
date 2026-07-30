@@ -364,9 +364,8 @@ sample. Wilson intervals give the range the true rate could plausibly occupy at 
 size, which is what separates a real miss from a small-sample one.
 
 On average the model is well calibrated: the game-weighted miss is **1.69 percentage points of
-win probability** (not points of score), and **77 of
-81** buckets land within 5 points of the observed rate. But **28 buckets miss by more than
-sampling error can explain**, and they lean almost entirely one way.
+win probability**, and **77 of 81** buckets land within 5 points of the observed rate. But **28
+buckets miss by more than sampling error can explain**, and they lean almost entirely one way.
 
 | Situation | Model says | Actually won | Games |
 |---|---|---|---|

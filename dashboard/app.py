@@ -62,8 +62,7 @@ st.set_page_config(page_title="NBA Win Probability", page_icon="🏀", layout="w
 # and let the reader draw the conclusion.
 CALIBRATION_HELP = (
     "Checked on 1,225 games the model had never seen: what it predicted and what actually "
-    "happened were 1.6 percentage points of win probability apart, on average — not 1.6 points "
-    "of score.\n\n"
+    "happened were 1.6 percentage points of win probability apart, on average.\n\n"
     "One known bias: leads are read slightly high. A first-quarter lead of 8-14 shows about "
     "76% here, where teams in that spot have actually won 71%. Comebacks happen a little more "
     "often than this model expects, so shade early leads down."
