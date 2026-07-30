@@ -363,7 +363,8 @@ counting **one vote per game** so that repeated states from the same game cannot
 sample. Wilson intervals give the range the true rate could plausibly occupy at each bucket's
 size, which is what separates a real miss from a small-sample one.
 
-On average the model is well calibrated: the game-weighted miss is **1.69 points**, and **77 of
+On average the model is well calibrated: the game-weighted miss is **1.69 percentage points of
+win probability** (not points of score), and **77 of
 81** buckets land within 5 points of the observed rate. But **28 buckets miss by more than
 sampling error can explain**, and they lean almost entirely one way.
 

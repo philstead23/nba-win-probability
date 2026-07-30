@@ -62,7 +62,8 @@ st.set_page_config(page_title="NBA Win Probability", page_icon="🏀", layout="w
 # and let the reader draw the conclusion.
 CALIBRATION_HELP = (
     "Checked on 1,225 games the model had never seen: what it predicted and what actually "
-    "happened were 1.6 points apart, on average.\n\n"
+    "happened were 1.6 percentage points of win probability apart, on average — not 1.6 points "
+    "of score.\n\n"
     "One known bias: leads are read slightly high. A first-quarter lead of 8-14 shows about "
     "76% here, where teams in that spot have actually won 71%. Comebacks happen a little more "
     "often than this model expects, so shade early leads down."
@@ -275,7 +276,7 @@ def render_replay():
     # moment someone reads it. It is deliberately duplicated on the other tab rather than moved:
     # the two placements answer different questions and neither one covers for the other.
     m1, m2, m3 = st.columns(3)
-    m1.metric("Accuracy of the odds", "±1.6 pts", help=CALIBRATION_HELP)
+    m1.metric("Accuracy of the odds (win %)", "±1.6 pts", help=CALIBRATION_HELP)
     m2.metric("Built from", "6,135 games", help=SCALE_HELP)
     m3.metric("Picks winners pre-game", "65.8%", help=PREGAME_HELP)
     st.caption(
@@ -702,7 +703,7 @@ def render_calculator():
     # vision. But "±1.6 points" is not methodology, it is one line, and this is where it lands.
     right.markdown(
         '<div style="text-align:right; color:#9aa0a6; font-size:0.86rem;">'
-        'Accurate to <strong style="color:#c8ccd0;">&plusmn;1.6 points</strong>, '
+        'Accurate to <strong style="color:#c8ccd0;">&plusmn;1.6 pts of win %</strong>, '
         'measured on 1,225 games the model never saw</div>',
         unsafe_allow_html=True,
     )
