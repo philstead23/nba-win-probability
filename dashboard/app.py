@@ -279,9 +279,8 @@ def render_replay():
     m2.metric("Games pulled (train + test)", "6,135", help=SCALE_HELP)
     m3.metric("Picks winners pre-game", "65.8%", help=PREGAME_HELP)
     st.caption(
-        "Trained on 4,174 games. Another 736 were kept separate to measure which settings "
-        f"performed best, not fed into training. Accuracy above comes from a separate 1,225 "
-        f"the model never saw — all of {TEST_SEASON}, held back for testing only."
+        f"Trained on 4,174 games; 736 scored settings only; 1,225 ({TEST_SEASON}) "
+        f"never seen — testing only."
     )
 
     st.markdown("---")
