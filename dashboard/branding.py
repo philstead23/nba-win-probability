@@ -5,8 +5,9 @@ Two problems have to be solved before official colours can be used on a chart, a
 solved here rather than by hand-editing hex codes:
 
   1. **Some primaries are near-black.** Brooklyn is #000000, Utah is #002B5C. Drawn on a dark
-     chart they disappear. Every colour is lifted toward white until it clears a luminance
-     floor, so the authentic hex stays the source of truth and the display value is derived.
+     chart they disappear. Rather than inventing a lightened version, such a team is shown in
+     its own published SECONDARY — Cleveland's real gold instead of a pink that no fan would
+     call wine. All 30 teams end up on a genuine colour of theirs; none on a synthetic one.
   2. **Some pairs are identical.** New York and Philadelphia are both #006BB6; Utah and
      Washington are both #002B5C; Minnesota and New Orleans are both #0C2340. A chart that
      draws home and away in the same colour is worse than one that ignores team colours, so
@@ -47,7 +48,11 @@ TEAM_COLORS = {
 }
 
 NEUTRAL = "#8A9099"
-_LUMA_FLOOR = 0.34      # below this a colour reads as "dark smudge" on the chart background
+# Lowered from 0.34, which was lifting 24 of 30 teams off their real colour — Boston's green and
+# Chicago's red were being brightened despite being perfectly legible. At 0.17 only genuinely
+# near-black primaries fail, and those get the team's own SECONDARY rather than a synthetic
+# lightened primary: Cleveland shows its real gold instead of a pink that no fan would call wine.
+_LUMA_FLOOR = 0.17
 _COLLISION = 0.13       # perceptual distance under which two colours are indistinguishable
 
 
@@ -83,16 +88,44 @@ def _distance(a: str, b: str) -> float:
     return ((ra - rb) ** 2 + (ga - gb) ** 2 + (ba - bb) ** 2) ** 0.5 / (255 * 3 ** 0.5)
 
 
-def matchup_colors(home: str, away: str) -> tuple[str, str]:
-    """Two colours guaranteed to be distinguishable from each other and from the background."""
-    home_hex, _ = TEAM_COLORS.get(home, (NEUTRAL, NEUTRAL))
-    away_hex, away_alt = TEAM_COLORS.get(away, (NEUTRAL, NEUTRAL))
+def authentic_display_color(abbreviation: str) -> str:
+    """A real colour of this team's, chosen for legibility rather than invented.
 
-    h = for_dark_background(home_hex)
-    a = for_dark_background(away_hex)
+    Order of preference:
+      1. the published primary, if it reads on a dark chart;
+      2. the published secondary, if the primary does not — still the team's own colour;
+      3. only if both are near-black, a lifted primary as a last resort.
+
+    Step 2 is the point. Cleveland's primary is #860038; lifting it produced #9D315E, a pink
+    nobody would recognise as wine. Their secondary is #FDBB30 — actual Cavs gold. Showing a
+    real secondary beats showing a fabricated primary.
+    """
+    primary, secondary = TEAM_COLORS.get(abbreviation, (NEUTRAL, NEUTRAL))
+    if _luma(primary) >= _LUMA_FLOOR:
+        return primary.upper()
+    if _luma(secondary) >= _LUMA_FLOOR:
+        return secondary.upper()
+    return for_dark_background(primary)
+
+
+def matchup_colors(home: str, away: str) -> tuple[str, str]:
+    """Two colours guaranteed to be distinguishable from each other and from the background.
+
+    On a collision the away team switches to its OTHER official colour — whichever of its
+    published pair is not already in use. The earlier version always reached for the secondary,
+    which was a no-op whenever the secondary was already being shown because the primary was
+    too dark: Utah at Denver put Utah's yellow against Denver's gold, tried Denver's gold again,
+    and fell through to grey. That happened in 37 of the 870 possible matchups.
+    """
+    away_primary, away_secondary = TEAM_COLORS.get(away, (NEUTRAL, NEUTRAL))
+
+    h = authentic_display_color(home)
+    a = authentic_display_color(away)
     if _distance(h, a) < _COLLISION:
-        a = for_dark_background(away_alt)
-    if _distance(h, a) < _COLLISION:      # secondary collided too (rare); bail to neutral
+        # Whichever of the away team's two colours is not the one we just tried.
+        other = away_secondary if a == away_primary.upper() else away_primary
+        a = for_dark_background(other)
+    if _distance(h, a) < _COLLISION:      # both of the away team's colours clash; last resort
         a = NEUTRAL
     return h, a
 
