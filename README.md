@@ -231,10 +231,12 @@ python src/experiments.py   # configuration search, scored on validation only
 
 **Splitting.** Whole games, never rows — two moments from the same game are near-duplicates
 sharing an outcome, so a row-level split would let the model be graded on games it had
-effectively already seen. The 2025-26 season is held out entirely by time: the model is fit
-on 2021-22 through 2024-25 and never sees 2025-26 during training or configuration search.
-That mirrors real use (fit on history, apply to a season that hasn't happened) and is a
-harder test than a random split.
+effectively already seen. The 2025-26 season is held out entirely by time: nothing from it is
+used during training or configuration search. 2021-22 through 2024-25 supply that training and
+configuration process (4,174 games trained on, 736 held back within those same seasons to
+score configurations — see above), but 2025-26 contributes to neither. That mirrors real use
+(fit on history, apply to a season that hasn't happened) and is a harder test than a random
+split.
 
 ### Results on the held-out 2025-26 season (1,225 games, 616,057 states)
 
