@@ -98,9 +98,10 @@ Converts the raw event feed into one row per moment: score, time remaining, poss
 and the label (`home_win`).
 
 **What the numbers refer to**, since they are easy to conflate. The four training seasons
-(2021-22 → 2024-25) total 4,910 games, not 4,174 — the difference is a validation slice carved
-out of those same four seasons, used only to measure which settings (like the leverage weight)
-scored best, never to train the model itself:
+(2021-22 → 2024-25) total 4,910 games, not 4,174 — the difference is a 15% validation slice
+(`VALIDATION_FRACTION` in `train_model.py`, 736 of 4,910 games) carved out of those same four
+seasons, used only to measure which settings (like the leverage weight) scored best, never to
+train the model itself:
 
 | | Seasons | Games | Moments |
 |---|---|---|---|

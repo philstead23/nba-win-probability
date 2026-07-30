@@ -71,11 +71,9 @@ CALIBRATION_HELP = (
 # 4,174 trained the model, 736 were a validation set for choosing settings, 1,225 were the
 # untouched test season.
 SCALE_HELP = (
-    "6,135 NBA games. About 3 million individual moments.\n\n"
-    "It learned from 4,174 of those. Another 736 were kept separate and used only to measure "
-    "which settings scored best — never fed into training itself. The last 1,225 — all of "
-    "2025-26 — were locked away and used only for testing, so the accuracy above comes from "
-    "games it had never seen."
+    "6,135 NBA games pulled in total, across training, validation and testing combined. "
+    "About 3 million individual moments.\n\n"
+    "The breakdown is in the caption below."
 )
 MOMENT_HELP = (
     "One moment is a single event — a shot, rebound, foul or timeout — paired with the score, "
