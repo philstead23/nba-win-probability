@@ -325,6 +325,40 @@ seconds, where the real gap is about 15. Weighting lifted that to ~10 points **a
 log loss both overall and on late close states — accuracy and realism moved together rather
 than trading off.
 
+### Known calibration bias: the model is too confident in the leader
+
+`tests/audit_calibration.py` sweeps 81 buckets — nine score bands across nine clock windows —
+counting **one vote per game** so that repeated states from the same game cannot inflate the
+sample. Wilson intervals give the range the true rate could plausibly occupy at each bucket's
+size, which is what separates a real miss from a small-sample one.
+
+On average the model is well calibrated: the game-weighted miss is **1.69 points**, and **77 of
+81** buckets land within 5 points of the observed rate. But **28 buckets miss by more than
+sampling error can explain**, and they lean almost entirely one way.
+
+| Situation | Model says | Actually won | Games |
+|---|---|---|---|
+| Q1, home up 8-14 | 76.3% | **70.9%** | 2,341 |
+| Q1, home down 8-14 | 31.4% | **37.6%** | 2,082 |
+| Q2, home up 8-14 | 78.7% | **75.6%** | 2,847 |
+| Q4 under 0:30, home up 1-3 | 90.5% | **84.5%** | 849 |
+| Q4 under 0:30, home down 1-3 | 12.6% | **16.4%** | 858 |
+
+The direction is consistent: **whoever leads is given more credit than the record supports, and
+whoever trails is given less.** Put in basketball terms, comebacks happen more often than this
+model expects. The effect is largest early — a first-quarter lead is treated as more durable
+than five seasons of games say it is.
+
+The bias is real rather than noise: it shows up in the held-out season alone (15 of 81 buckets)
+and again across all five (28 of 81). It is also small in absolute terms, a few points in the
+affected buckets against an average miss under two, and it does not move the headline metrics.
+
+**It is documented rather than patched.** A post-hoc correction fitted to these buckets could
+not then be validated, because the held-out season is the same data measuring the problem —
+tuning on it would forfeit the only clean test available. The honest summary is that the model
+is well calibrated on average and overstates leads at the margin, and that a coach reading a
+first-quarter lead of 8-14 should shade it down by roughly five points.
+
 ## Phase 5: Dashboard
 
 ```bash
@@ -370,7 +404,7 @@ Three real defects, all found by running the thing rather than reading the code:
    Defaults are now conditioned on where in the game you are, and a regression test pins the
    calculator to within 5 points of what the model gives for real states in the same spot.
 
-## Phase 5 scope (as agreed)
+## Phase 5 scope
 
 Two views:
 

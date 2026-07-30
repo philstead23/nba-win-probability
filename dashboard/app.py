@@ -62,7 +62,10 @@ st.set_page_config(page_title="NBA Win Probability", page_icon="🏀", layout="w
 # and let the reader draw the conclusion.
 CALIBRATION_HELP = (
     "Checked on 1,225 games the model had never seen: what it predicted and what actually "
-    "happened were 1.6 points apart, on average."
+    "happened were 1.6 points apart, on average.\n\n"
+    "One known bias: leads are read slightly high. A first-quarter lead of 8-14 shows about "
+    "76% here, where teams in that spot have actually won 71%. Comebacks happen a little more "
+    "often than this model expects, so shade early leads down."
 )
 # The three numbers must add up to 6,135, or a reader can spot 736 games going missing.
 # 4,174 trained the model, 736 were a validation set for choosing settings, 1,225 were the
