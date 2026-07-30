@@ -79,7 +79,8 @@ MOMENT_HELP = (
 )
 PREGAME_HELP = (
     "Before a single possession, from team ratings alone.\n\n"
-    "Betting markets run about 66-68%, so this is close to the ceiling."
+    "Betting markets are commonly cited around 66% for this — general knowledge, not something "
+    "this project measured — so this is close to that range."
 )
 
 REPLAY_COLUMNS = [
