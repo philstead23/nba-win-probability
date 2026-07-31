@@ -825,6 +825,12 @@ _code_link = (
     f'font-size:.9rem; font-weight:600; color:inherit; white-space:nowrap;">'
     f'View code on GitHub &#8599;</div></a>'
 )
+# Muted and small, sitting under the title rather than beside it: attribution on the
+# deliverable, not a second headline competing with the league mark.
+_byline = (
+    '<div style="color:#9aa0a6; font-size:0.9rem; margin:0 0 14px 2px;">'
+    'Prepared by Phillip Stead</div>'
+)
 if _nba:
     st.markdown(
         f'<div style="display:flex; align-items:center; justify-content:space-between; '
@@ -833,12 +839,14 @@ if _nba:
         f'{_nba}'
         f'<span style="font-size:2.4rem; font-weight:700; letter-spacing:-.02em;">'
         f'Win Probability</span></div>'
-        f'{_code_link}</div>',
+        f'{_code_link}</div>'
+        f'{_byline}',
         unsafe_allow_html=True,
     )
 else:
     st.title("🏀 NBA Win Probability")
     st.markdown(_code_link, unsafe_allow_html=True)
+    st.markdown(_byline, unsafe_allow_html=True)
 
 # The sidebar is written BEFORE the tabs, not after. Streamlit streams elements to the browser
 # in the order the script produces them, so with this block at the foot of the file the About
