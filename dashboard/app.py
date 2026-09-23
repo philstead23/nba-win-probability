@@ -51,7 +51,11 @@ st.set_page_config(page_title="NBA Win Probability", page_icon="🏀", layout="w
 # linking to the source repository. They are rendered inside the app's own iframe, so app CSS
 # can reach them; the ⋮ menu beside them holds only theme/print controls and is left alone.
 st.markdown(
-    "<style>[data-testid='stToolbarActions']{display:none !important;}</style>",
+    "<style>"
+    "[data-testid='stToolbarActions']{display:none !important;}"
+    "[data-testid='stToolbar'] a[href*='github.com']{display:none !important;}"
+    "[data-testid='stAppDeployButton']{display:none !important;}"
+    "</style>",
     unsafe_allow_html=True,
 )
 
