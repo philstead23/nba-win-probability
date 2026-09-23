@@ -47,6 +47,14 @@ from train_model import TEST_SEASON  # noqa: E402
 
 st.set_page_config(page_title="NBA Win Probability", page_icon="🏀", layout="wide")
 
+# Streamlit Community Cloud injects a "Fork" button and a GitHub icon into the toolbar, both
+# linking to the source repository. They are rendered inside the app's own iframe, so app CSS
+# can reach them; the ⋮ menu beside them holds only theme/print controls and is left alone.
+st.markdown(
+    "<style>[data-testid='stToolbarActions']{display:none !important;}</style>",
+    unsafe_allow_html=True,
+)
+
 # Tile detail lives behind a hover, so the sidebar stays scannable. Everything a coach needs
 # at a glance is the three numbers; the explanation is there if they want it.
 # Help text is short, one idea per line, and leads with a concrete example. A coach hovering
